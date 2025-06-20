@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>おみくじ結果</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to bottom, #dff3ff, #ffffff);
+      font-family: 'Segoe UI', sans-serif;
+      padding-top: 60px;
+      margin: 0;
+      text-align: center;
+    }
+
+    /* モバイル以外では非表示にする */
+    @media screen and (min-width: 768px) {
+      .mobile-only {
+        display: none;
+      }
+    }
+
+    .container {
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .result-card {
+      background: #ffffff;
+      border-radius: 1rem;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+      padding: 30px 20px;
+    }
+
+    .result-title {
+      font-size: 2rem;
+      color: #dc3545;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .emoji {
+      font-size: 2.2rem;
+      margin: 10px 0;
+    }
+
+    .fortune-section {
+      font-size: 1rem;
+      color: #333;
+      margin: 10px 0;
+      text-align: left;
+    }
+
+    .back-button {
+      margin-top: 25px;
+      font-size: 1rem;
+    }
+
+    .footer-bar {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #ffc107;
+      color: #000;
+      font-weight: bold;
+      font-size: 0.9rem;
+      padding: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container mobile-only">
+    <div class="result-card">
+      <div class="result-title">{{ data['運勢'].values[0] }}</div>
+      <div class="emoji">🎴</div>
+
+      <p class="fortune-section"> {{ data['全体運'].values[0] }}</p>
+      <p class="fortune-section"> <h3>恋愛運</h3>：{{ data['恋愛運'].values[0] }}</p>
+      <p class="fortune-section"> <h3>仕事運</h3>：{{ data['仕事運'].values[0] }}</p>
+      <p class="fortune-section"><h3>金運</h3> ：{{ data['金運'].values[0] }}</p>
+
+      <button class="btn btn-warning back-button" onclick="history.back()">もう一度</button>
+    </div>
+  </div>
+
+  <div class="footer-bar mobile-only">今日もいい一日になりますように ☀️</div>
+
+</body>
+</html>
